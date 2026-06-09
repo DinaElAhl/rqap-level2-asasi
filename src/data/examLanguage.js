@@ -30,12 +30,12 @@ export const languageSections = {
         tag: "Vocabulary · Theological Term",
         stem: "In Surah al-Ikhlas, the name <span class='arabic-inline'>الصَّمَد</span> describes Allah. Its closest meaning is:",
         options: [
-          "The One who depends on none, upon whom all depend",
-          "Both (A) and (D) — the Eternal Refuge who is self-sufficient",
-          "The Compassionate and Merciful",
-          "The One who is eternally sought after, the Refuge"
+          "The eternally self-sufficient Master, sought by all while needing none",
+          "The Compassionate and Merciful to His servants",
+          "The Creator of the heavens and the earth",
+          "The One who forgives all sins"
         ],
-        correct: 1
+        correct: 0
       },
       {
         id: "L2-1A-002",
@@ -75,10 +75,10 @@ export const languageSections = {
         tag: "Morphology · Pattern",
         stem: "The word <span class='arabic-inline'>مُسْتَقَرّ</span> (as in <span class='arabic-inline'>لِكُلِّ نَبَإٍ مُسْتَقَرّ</span>) is derived from which root, and what is its grammatical type?",
         options: [
-          "Root: ق-ر-ر; اسم مفعول (passive participle) — 'that which is made stable'",
-          "Root: ق-ر-ر; اسم مكان/زمان (noun of place/time) — 'a place or time of settlement'",
+          "Root: ق-ص-ر; اسم مفعول (passive participle)",
+          "Root: ق-ر-ر; اسم مكان/زمان (noun of place/time) — 'a place or time of settlement / occurrence'",
           "Root: س-ق-ر; اسم فاعل (active participle)",
-          "Root: ق-ر-ر; مصدر (verbal noun)"
+          "Root: ق-ر-ب; مصدر (verbal noun)"
         ],
         correct: 1
       },

@@ -1,12 +1,25 @@
 import { useExam } from '../state/ExamContext.jsx'
+import { THRESHOLDS } from '../data/exam.js'
+
+const LANG_TEXT = 'Track 1 — Language'
+const TAJ_TEXT = 'Track 2 — Tajweed'
 
 function trackText(selectedTracks, results) {
-  const lang = selectedTracks.language
-  const taj = selectedTracks.tajweed
-  let text
-  if (lang && taj) text = 'Track 1 — Language · Track 2 — Tajweed'
-  else if (lang) text = 'Track 1 — Language'
-  else text = 'Track 2 — Tajweed'
+  let lang = !!selectedTracks.language
+  let taj = !!selectedTracks.tajweed
+
+  // On a single-track pass (both tracks attempted, only one met threshold),
+  // certify only the track that actually passed — never name a failed track.
+  if (results && results.verdictTier === 'pass-partial') {
+    const ts = results.trackScores || {}
+    lang = lang && ts.language != null && ts.language >= THRESHOLDS.language.pass
+    taj = taj && ts.tajweed != null && ts.tajweed >= THRESHOLDS.tajweed.pass
+  }
+
+  const parts = []
+  if (lang) parts.push(LANG_TEXT)
+  if (taj) parts.push(TAJ_TEXT)
+  let text = parts.join(' · ')
   if (results && results.verdictTier === 'distinction') text += ' · with Distinction'
   return text
 }

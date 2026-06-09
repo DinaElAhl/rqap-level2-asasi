@@ -87,7 +87,7 @@ export default function Item() {
   } else if (item.type === 'audio') {
     input = (
       <>
-        <AudioRecorder itemId={item.id} />
+        <AudioRecorder key={item.id} itemId={item.id} />
         <div className="panel-info">
           <p className="small">
             Allow microphone access when prompted. Recite clearly; you may re-record

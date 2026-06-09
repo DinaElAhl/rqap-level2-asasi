@@ -201,8 +201,7 @@ export function ExamProvider({ children }) {
     const m = Math.floor(remaining / 60)
     const s = remaining % 60
     timerText = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
-    if (remaining <= 0) timerClass = 'danger'
-    else if (remaining < 60) timerClass = 'danger'
+    if (remaining < 60) timerClass = 'danger'
     else if (remaining < 300) timerClass = 'warning'
   }
 

@@ -21,12 +21,19 @@ export default function AudioRecorder({ itemId }) {
   const chunksRef = useRef([])
   const intervalRef = useRef(null)
   const startTimeRef = useRef(0)
+  const prevUrlRef = useRef(null)
 
   useEffect(() => {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
+      // Stop the recorder first so its onstop doesn't try to save after unmount.
+      if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
+        mediaRecorderRef.current.onstop = null
+        mediaRecorderRef.current.stop()
+      }
       if (streamRef.current) {
         streamRef.current.getTracks().forEach((t) => t.stop())
+        streamRef.current = null
       }
     }
   }, [])
@@ -58,6 +65,10 @@ export default function AudioRecorder({ itemId }) {
         const blob = new Blob(chunksRef.current, { type: 'audio/webm' })
         const url = URL.createObjectURL(blob)
         const durationSec = (Date.now() - startTimeRef.current) / 1000
+        // Revoke the URL from a previous re-record in this session (never the
+        // restored `existing` URL, which the store still references).
+        if (prevUrlRef.current) URL.revokeObjectURL(prevUrlRef.current)
+        prevUrlRef.current = url
         setAudioUrl(url)
         setAudio(itemId, { blob, url, durationSec })
         setRecording(false)

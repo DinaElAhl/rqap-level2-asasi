@@ -306,7 +306,7 @@ export const tajweedSections = {
         options: [
           "It carries a fatha or damma",
           "It is saakin after a fatha",
-          "It carries a kasra, or is saakin after an original kasra not followed by a letter of isti'la, e.g. فِرْعَوْن vs. شِرْعَة",
+          "It carries a kasra, or is saakin after an original kasra not followed by a letter of isti'la — e.g. tarqiq in شِرْعَة, but tafkhim in قِرْطَاس because the raa is followed by the isti'la letter ط",
           "It is doubled with shadda"
         ],
         correct: 2
@@ -412,7 +412,7 @@ export const tajweedSections = {
       {
         id: "L2-2B-007",
         tag: "Madd Identification",
-        stem: "In Surah al-Fil, the word <span class='arabic-inline'>جَاءَ</span>-type structure aside, the word <span class='arabic-inline'>السَّمَاءِ</span> (where a madd alif is followed by a hamza in the same word) is an example of which madd?",
+        stem: "In Surah al-Takwir, the word <span class='arabic-inline'>السَّمَاءُ</span> (where a madd alif is followed by a hamza in the same word) is an example of which madd?",
         options: [
           "Madd Munfasil (separated)",
           "Madd Muttasil (connected), 4–5 counts",

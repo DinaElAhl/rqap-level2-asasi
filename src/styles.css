@@ -1361,9 +1361,15 @@ p { color: var(--ink-soft); margin-bottom: 1rem; }
    PRINT (for certificate)
    ============================================ */
 @media print {
-  body::before, .topbar, .item-nav, button, .action-row { display: none !important; }
-  .screen { padding: 0; }
-  .certificate { page-break-after: always; box-shadow: none; }
+  body::before, .topbar, .item-nav, button, .action-row, .panel-info { display: none !important; }
+  .screen { padding: 0; animation: none; }
+  .certificate {
+    page-break-after: always;
+    box-shadow: none;
+    /* Preserve the gold border / seal gradients when printing to paper or PDF */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 
 /* ============================================
@@ -1379,4 +1385,7 @@ p { color: var(--ink-soft); margin-bottom: 1rem; }
   .item-container { padding: 1.5rem 1.2rem; }
   .item-verse { font-size: 1.3rem; padding: 1rem; }
   .item-passage { font-size: 1.2rem; padding: 1rem; }
+  .verdict-badge { padding: 1.6rem 1.4rem; max-width: 100%; }
+  .certificate { padding: 2rem 1.1rem; }
+  .certificate-seal { bottom: 14px; right: 14px; width: 60px; height: 60px; font-size: 1.5rem; }
 }
